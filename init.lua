@@ -16,9 +16,8 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 vim.opt.updatetime = 5
 
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-
+--vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+--vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 -- Lazy Install
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -47,7 +46,6 @@ require("lazy").setup({
                         terminal = true,
                     },
                 })
-                vim.o.termguicolors = true
                 --vim.cmd([[colorscheme rose-pine-moon]])
                 --vim.cmd([[hi normal guibg=#0a080f]])
             end,
@@ -77,7 +75,7 @@ require("lazy").setup({
                 require("catppuccin").setup({
                     flavour = "mocha",
                 })
-                vim.cmd([[colorscheme catppuccin]])
+                --vim.cmd([[colorscheme catppuccin]])
             end
         },
         {
@@ -106,91 +104,13 @@ require("lazy").setup({
                 --require('pywal16').setup()
             end,
         },
-        { 'nvim-lua/plenary.nvim' },
-        { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
-        { 'williamboman/mason.nvim' },
-        { 'williamboman/mason-lspconfig.nvim' },
-        { 'neovim/nvim-lspconfig' },
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'hrsh7th/nvim-cmp' },
-        { 'L3MON4D3/LuaSnip' },
-        { 'hrsh7th/nvim-cmp' },
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'mfussenegger/nvim-jdtls'},
-        { 'nvim-treesitter/nvim-treesitter',  build = ':TSUpdate' },
         {
-            "stevearc/conform.nvim",
+            'nvim-lualine/lualine.nvim',
+            dependencies = { 'nvim-tree/nvim-web-devicons' },
             config = function()
-                require("conform").setup({
-                    formatters_by_ft = {
-                        lua = { "stylua" },
-                        svelte = { { "prettierd", "prettier" } },
-                        javascript = { { "prettierd", "prettier" } },
-                        typescript = { { "prettierd", "prettier" } },
-                        javascriptreact = { { "prettierd", "prettier" } },
-                        typescriptreact = { { "prettierd", "prettier" } },
-                        json = { { "prettierd", "prettier" } },
-                        graphql = { { "prettierd", "prettier" } },
-                        java = { "google-java-format" },
-                        kotlin = { "ktlint" },
-                        ruby = { "standardrb" },
-                        markdown = { { "prettierd", "prettier" } },
-                        erb = { "htmlbeautifier" },
-                        html = { "htmlbeautifier" },
-                        bash = { "beautysh" },
-                        proto = { "buf" },
-                        rust = { "rustfmt" },
-                        yaml = { "yamlfix" },
-                        toml = { "taplo" },
-                        css = { { "prettierd", "prettier" } },
-                        scss = { { "prettierd", "prettier" } },
-                    },
-                })
-
-                vim.keymap.set({ "n", "v" }, "<leader>l", function()
-                    require("conform").format({
-                        lsp_fallback = true,
-                        async = false,
-                        timeout_ms = 500,
-                    })
-                end, { desc = "Format file or range (in visual mode)" })
+                require('lualine').setup()
             end
         },
         { import = "plugins" },
     }
-}
-)
-
-local lsp_zero = require('lsp-zero')
-lsp_zero.on_attach(function(client, bufnr)
-    lsp_zero.default_keymaps({ buffer = bufnr })
-end)
-
--- Mason Setup
-require("mason").setup()
-require("mason-lspconfig").setup({
-
-    ensure_installed = {
-        "lua_ls",
-        "rust_analyzer",
-        "tsserver",
-        "clangd",
-    },
-    handlers = {
-        function(server_name)
-            require("lspconfig")[server_name].setup({})
-        end,
-    },
 })
-
--- Tree Sitter Setup
-require 'nvim-treesitter.configs'.setup {
-    -- A list of parser names, or "all" (the five listed parsers should always be installed)
-    ensure_installed = { "c", "lua", "vim", "php", "cpp", "rust", "vimdoc", "query" },
-    sync_install = false,
-    auto_install = true,
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-}

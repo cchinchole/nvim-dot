@@ -1,5 +1,6 @@
 return {
-    "nvim-telescope/telescope.nvim",
+    {
+        "nvim-telescope/telescope.nvim",
 
     tag = "0.1.5",
 
@@ -12,4 +13,5 @@ return {
         local tele = require('telescope.builtin')
         vim.keymap.set('n', '<leader>ff', tele.find_files, {})
     end
-} 
+    }
+}

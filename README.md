@@ -1,2 +1,3 @@
-## Requirements ##
-pacman -S npm ripgrep wget
+# My Nvim configuration #
+## Install Reqs ##
+pacman -S npm ripgrep wget nodejs fzf

@@ -41,16 +41,8 @@ return {
                 },
             })
 
-            vim.keymap.set({ "n", "v" }, "<leader>l", function()
-                require("conform").format({
-                    lsp_fallback = true,
-                    async = false,
-                    timeout_ms = 500,
-                })
-            end, { desc = "Format file or range (in visual mode)" })
-
+            --LSP Zero setup
             local lsp_zero = require('lsp-zero')
-
             lsp_zero.configure('lua_ls', {
                 settings = {
                     Lua = {
@@ -74,6 +66,7 @@ return {
                     "tsserver",
                     "clangd",
                     "jdtls",
+                    "pyright",
                 },
                 handlers = {
                     function(server_name)
@@ -86,6 +79,17 @@ return {
                     end,
                 },
             })
+
+            -- Keybinds
+            vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>",{ noremap = true, silent = true })
+            vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+            vim.keymap.set({ "n", "v" }, "<leader>l", function()
+                require("conform").format({
+                    lsp_fallback = true,
+                    async = false,
+                    timeout_ms = 500,
+                })
+            end)
         end
     },
 }

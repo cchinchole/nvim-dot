@@ -24,6 +24,6 @@ return {
     -- Default to dark theme
     vim.o.background = "dark"  -- dark | light
 
-    require("monokai-nightasty").load(opts)
+   --  require("monokai-nightasty").load(opts)
   end,
 }

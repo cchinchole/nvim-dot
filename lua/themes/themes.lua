@@ -94,7 +94,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            --vim.cmd('colorscheme nightfox')
+           -- vim.cmd('colorscheme nightfox')
         end
     },
     {
@@ -110,7 +110,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            set_colorscheme(vim.fn.readfile(base16_theme_fname)[1])
+             set_colorscheme(vim.fn.readfile(base16_theme_fname)[1])
         end
     },
 }

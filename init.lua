@@ -10,7 +10,7 @@ vim.opt.smartindent = true
 vim.opt.incsearch = true
 vim.opt.termguicolors = true
 vim.opt.updatetime = 5
-
+vim.keymap.set('i', '{', '{<CR>}<Esc>ko')
 -- Lazy Install
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

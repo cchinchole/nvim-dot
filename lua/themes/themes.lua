@@ -14,6 +14,10 @@ end
 
 return {
     {
+        'typicode/bg.nvim',
+        lazy = false,
+    },
+    {
         'rose-pine/nvim',
         lazy = false,
         priority = 1000,
@@ -31,10 +35,10 @@ return {
     {
         'bluz71/vim-moonfly-colors',
         name = 'moonfly',
-        laze = false,
+        lazy = false,
         priority = 1000,
         config = function()
-            --vim.cmd([[colorscheme moonfly]])
+            vim.cmd [[colorscheme moonfly]]
         end
     },
     {
@@ -110,7 +114,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-             set_colorscheme(vim.fn.readfile(base16_theme_fname)[1])
+             -- set_colorscheme(vim.fn.readfile(base16_theme_fname)[1])
         end
     },
 }

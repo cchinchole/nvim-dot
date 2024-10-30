@@ -38,7 +38,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd [[colorscheme moonfly]]
+            --vim.cmd [[colorscheme moonfly]]
         end
     },
     {
@@ -57,7 +57,7 @@ return {
             require("catppuccin").setup({
                 flavour = "mocha",
             })
-            --vim.cmd([[colorscheme catppuccin]])
+--            vim.cmd([[colorscheme catppuccin]])
         end
     },
     {
@@ -114,6 +114,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
+            vim.cmd('colorscheme base16-black-metal')
              -- set_colorscheme(vim.fn.readfile(base16_theme_fname)[1])
         end
     },

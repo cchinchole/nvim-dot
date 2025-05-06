@@ -2,10 +2,11 @@ return {
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
+        lazy = false,
         dependencies = {
+            'neovim/nvim-lspconfig',
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
-            'neovim/nvim-lspconfig',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/nvim-cmp',
             'L3MON4D3/LuaSnip',
@@ -43,40 +44,53 @@ return {
 
             --LSP Zero setup
             local lsp_zero = require('lsp-zero')
-            lsp_zero.configure('lua_ls', {
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { 'vim' },
-                        },
-                    },
-                },
+            lsp_zero.extend_lspconfig()
+            -- lsp_zero.configure('lua_ls', {
+            --     settings = {
+            --         Lua = {
+            --             diagnostics = {
+            --                 globals = { 'vim' },
+            --             },
+            --         },
+            --     },
+            -- })
+
+            vim.diagnostic.config({
+                 virtual_text = true, -- Show inline error messages
+                 float = { border = "rounded" }, -- Customize floating window
             })
 
             lsp_zero.on_attach(function(client, bufnr)
                 lsp_zero.default_keymaps({ buffer = bufnr })
+                vim.keymap.set('n', '<leader>ge', vim.diagnostic.goto_next, opts)
             end)
 
             -- Mason Setup
-            require("mason").setup()
+            require("mason").setup({
+                ui = {
+                    border = "rounded",
+                },
+            })
+
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
                     "rust_analyzer",
-                    "tsserver",
                     "clangd",
                     "jdtls",
                     "pyright",
+                    "gopls",
                 },
                 handlers = {
-                    function(server_name)
-                        require("lspconfig")[server_name].setup({})
-                    end,
+                    --function(server_name)
+                    --    require("lspconfig")[server_name].setup({})
+                    --end,
 
-                    ["lua_ls"] = function()
-                        local lua_opts = lsp_zero.nvim_lua_ls()
-                        require("lspconfig").lua_ls.setup(lua_opts)
-                    end,
+                    --lua_ls = function()
+                    --    local lua_opts = lsp_zero.nvim_lua_ls()
+                    --    require("lspconfig").lua_ls.setup(lua_opts)
+                    --end,
+                    lsp_zero.default_setup,
                 },
             })
 

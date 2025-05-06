@@ -47,6 +47,16 @@ require("lazy").setup({
                 'kkharji/sqlite.lua',
             },
         },
+        { "folke/snacks.nvim",
+            priority = 1000,
+            lazy = false,
+            opts = {
+                bigfile = { enabled = true },
+            },
+            keys = {
+                { '<leadergg', function() Snacks.lazygit() end, desc = "Lazygit" }
+            },
+        },
         { import = "themes", },
         { import = "plugins" },
     }

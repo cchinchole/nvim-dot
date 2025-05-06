@@ -1,17 +1,3 @@
-local base16_theme_fname = vim.fn.expand(vim.env.XDG_CONFIG_HOME .. '/.base16_theme')
-local function set_colorscheme(name)
-    vim.fn.writefile({ name }, base16_theme_fname)
-    vim.cmd('colorscheme ' .. name)
-    vim.loop.spawn('kitty', {
-        args = {
-            '@',
-            'set-colors',
-            '-c',
-            string.format(vim.env.HOME .. '/base16-kitty/colors/%s.conf', name)
-        }
-    }, nil)
-end
-
 return {
     {
         'typicode/bg.nvim',
@@ -114,8 +100,10 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd('colorscheme base16-black-metal')
-             -- set_colorscheme(vim.fn.readfile(base16_theme_fname)[1])
+              vim.cmd('colorscheme base16-chalk')
+             -- vim.cmd('colorscheme base16-3024')
+                
+            -- set_colorscheme(vim.fn.readfile(base16_theme_fname)[1])
         end
     },
 }

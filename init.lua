@@ -10,6 +10,7 @@ vim.opt.smartindent = true
 vim.opt.incsearch = true
 vim.opt.termguicolors = true
 vim.opt.updatetime = 5
+vim.keymap.set('n', '<Tab>', ':b#<CR>', { noremap = true, silent = true })
 
 -- keybind for auto complete braces
 -- vim.keymap.set('i', '{', '{<CR>}<Esc>ko')
@@ -30,16 +31,16 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
         { 'folke/which-key.nvim' },
-        {
-            'VonHeikemen/searchbox.nvim',
-            dependencies = { 'MunifTanjim/nui.nvim' },
-            config = function()
-                vim.keymap.set('n', '<leader>s', ':SearchBoxIncSearch<CR>')
-                --vim.keymap.set('n', '<leader>ss', ':SearchBoxIncSearch <C-r>=expand(\'<cword>\')<CR><CR>')
-                vim.keymap.set('n', '<leader>r', ':SearchBoxReplace<CR>')
-                --vim.keymap.set('n', '<leader>rr', ':SearchBoxReplace confirm=menu -- <C-r>=expand(\'<cword>\')<CR><CR>')
-            end
-        },
+        -- {
+        --     'VonHeikemen/searchbox.nvim',
+        --     dependencies = { 'MunifTanjim/nui.nvim' },
+        --     config = function()
+        --         vim.keymap.set('n', '<leader>s', ':SearchBoxIncSearch<CR>')
+        --         --vim.keymap.set('n', '<leader>ss', ':SearchBoxIncSearch <C-r>=expand(\'<cword>\')<CR><CR>')
+        --         vim.keymap.set('n', '<leader>r', ':SearchBoxReplace<CR>')
+        --         --vim.keymap.set('n', '<leader>rr', ':SearchBoxReplace confirm=menu -- <C-r>=expand(\'<cword>\')<CR><CR>')
+        --     end
+        -- },
         {
             'vidocqh/data-viewer.nvim',
             dependencies = {

@@ -27,7 +27,7 @@ return {
             })
             local tele = require('telescope.builtin')
             vim.keymap.set('n', '<leader>ff', tele.find_files, {})
-            vim.api.nvim_set_keymap('n', '<leader>R',
+            vim.api.nvim_set_keymap('n', '<leader>F',
                 [[<cmd>lua require('telescope.builtin').lsp_document_symbols({ symbols = 'function' })<CR>]],
                 { noremap = true, silent = true })
         end

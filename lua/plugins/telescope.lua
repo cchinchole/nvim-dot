@@ -1,7 +1,7 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.5",
+        tag = "0.1.8",
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
@@ -27,9 +27,17 @@ return {
             })
             local tele = require('telescope.builtin')
             vim.keymap.set('n', '<leader>ff', tele.find_files, {})
-            vim.api.nvim_set_keymap('n', '<leader>F',
-                [[<cmd>lua require('telescope.builtin').lsp_document_symbols({ symbols = 'function' })<CR>]],
-                { noremap = true, silent = true })
+            vim.keymap.set('n', '<leader>F', function()
+                local bufnr = vim.api.nvim_get_current_buf()
+                local clients = vim.lsp.get_clients({ bufnr = bufnr })
+                if #clients == 0 then
+                    vim.notify('No LSP clients attached to this buffer', vim.log.levels.WARN)
+                    return
+                end
+                require('telescope.builtin').lsp_document_symbols({
+                    symbols = { 'function', 'method', 'class', 'interface', 'module' }, -- Optional: filter symbol types
+                })
+            end, { desc = 'Find Document Symbols' })
         end
     }
 }

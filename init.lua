@@ -30,37 +30,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
-        { 'folke/which-key.nvim' },
-        -- {
-        --     'VonHeikemen/searchbox.nvim',
-        --     dependencies = { 'MunifTanjim/nui.nvim' },
-        --     config = function()
-        --         vim.keymap.set('n', '<leader>s', ':SearchBoxIncSearch<CR>')
-        --         --vim.keymap.set('n', '<leader>ss', ':SearchBoxIncSearch <C-r>=expand(\'<cword>\')<CR><CR>')
-        --         vim.keymap.set('n', '<leader>r', ':SearchBoxReplace<CR>')
-        --         --vim.keymap.set('n', '<leader>rr', ':SearchBoxReplace confirm=menu -- <C-r>=expand(\'<cword>\')<CR><CR>')
-        --     end
-        -- },
-        {
-            'vidocqh/data-viewer.nvim',
-            dependencies = {
-                'nvim-lua/plenary.nvim',
-                'kkharji/sqlite.lua',
-            },
-        },
-        { "folke/snacks.nvim",
-            priority = 1000,
-            lazy = false,
-            opts = {
-                bigfile = { enabled = true },
-            },
-            keys = {
-                { '<leadergg', function() Snacks.lazygit() end, desc = "Lazygit" }
-            },
-        },
         { import = "themes", },
         { import = "plugins" },
     }
 })
+
+vim.cmd('colorscheme onedark_dark')
 
 

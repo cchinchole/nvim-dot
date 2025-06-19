@@ -1,0 +1,14 @@
+return {
+    {
+        "ibhagwan/fzf-lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {},
+        config = function()
+            local fzf = require("fzf-lua")
+            fzf.setup({
+                vim.keymap.set('n', '<leader>ff', fzf.files, { desc = "Fzf Files" }),
+                vim.keymap.set('n', '<leader>f', fzf.treesitter, { desc = "Fzf Document Symbols" })
+            })
+        end
+    }
+}

@@ -1,19 +1,10 @@
 -- Vim Setup
-vim.g.mapleader = " "
-vim.opt.nu = true
-vim.wo.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.incsearch = true
-vim.opt.termguicolors = true
-vim.opt.updatetime = 5
-vim.keymap.set('n', '<Tab>', ':b#<CR>', { noremap = true, silent = true })
 
 -- keybind for auto complete braces
 -- vim.keymap.set('i', '{', '{<CR>}<Esc>ko')
+
+require('options')
+require('keybinds')
 
 -- Lazy Install
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -36,5 +27,3 @@ require("lazy").setup({
 })
 
 vim.cmd('colorscheme onedark_dark')
-
-

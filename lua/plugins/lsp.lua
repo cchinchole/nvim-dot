@@ -48,6 +48,9 @@ return {
                 "rust_analyzer",
                 "gopls",
             },
+            vim.diagnostic.config({
+                virtual_text = true, -- Set to true to enable virtual text
+            }),
             handlers = {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {

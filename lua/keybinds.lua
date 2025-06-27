@@ -49,3 +49,5 @@ vim.keymap.set("n", "<leader>lx", function()
         underline = isLspDiagnosticsVisible
     })
 end, { desc = "Toggle LSP diagnostics" })
+
+vim.keymap.set('n', '<leader>ql', function() require('quote_length').get_quote_length() end, { desc = 'Display quoted text length' })

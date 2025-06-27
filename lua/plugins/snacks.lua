@@ -7,7 +7,6 @@ return {
         opts = {
             bigfile = { enabled = true },
             dashboard = { enabled = false },
-            explorer = { enabled = true },
             indent = { enabled = true },
             input = { enabled = true },
             notifier = {
@@ -31,7 +30,6 @@ return {
             { "<leader><space>", function() Snacks.picker.smart() end,                                   desc = "Smart Find Files" },
             { "<leader>,",       function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
             --{ "<leader>/",       function() Snacks.picker.grep() end,                                    desc = "Grep" },
-            { "<leader>e",       function() Snacks.explorer() end,                                       desc = "File Explorer" },
             -- find
             { "<leader>fc",      function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
             { "<leader>ff",      function() Snacks.picker.files() end,                                   desc = "Find Files" },
@@ -64,21 +62,43 @@ return {
             -- LSP
             { "gd",              function() Snacks.picker.lsp_definitions() end,                         desc = "Goto Definition" },
             { "gD",              function() Snacks.picker.lsp_declarations() end,                        desc = "Goto Declaration" },
-            { "gr",              function() Snacks.picker.lsp_references() end,                          nowait = true,                     desc = "References" },
+            { "gr",              function() Snacks.picker.lsp_references() end,                          nowait = true,                  desc = "References" },
             { "gI",              function() Snacks.picker.lsp_implementations() end,                     desc = "Goto Implementation" },
             { "gy",              function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
             { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
             { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
+            { "<leader>qf",      function() Snacks.picker.qflist() end,                                desc = "Quickfix" },
             -- Other
             { "<leader>.",       function() Snacks.scratch() end,                                        desc = "Toggle Scratch Buffer" },
             { "<leader>S",       function() Snacks.scratch.select() end,                                 desc = "Select Scratch Buffer" },
             { "<leader>cR",      function() Snacks.rename.rename_file() end,                             desc = "Rename File" },
-            { "<leader>gB",      function() Snacks.gitbrowse() end,                                      desc = "Git Browse",               mode = { "n", "v" } },
+            { "<leader>gB",      function() Snacks.gitbrowse() end,                                      desc = "Git Browse",            mode = { "n", "v" } },
             { "<c-/>",           function() Snacks.terminal() end,                                       desc = "Toggle Terminal" },
-            { "]]",              function() Snacks.words.jump(vim.v.count1) end,                         desc = "Next Reference",           mode = { "n", "t" } },
-            { "[[",              function() Snacks.words.jump(-vim.v.count1) end,                        desc = "Prev Reference",           mode = { "n", "t" } },
+            { "]]",              function() Snacks.words.jump(vim.v.count1) end,                         desc = "Next Reference",        mode = { "n", "t" } },
+            { "[[",              function() Snacks.words.jump(-vim.v.count1) end,                        desc = "Prev Reference",        mode = { "n", "t" } },
         },
         init = function()
+            vim.api.nvim_create_autocmd("ColorScheme", {
+                pattern = "*",
+                callback = function()
+                    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "FoldColumn", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "TelescopePrompt", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "TelescopeResults", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "TelescopePreview", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "NONE", ctermbg = "NONE" })
+                    vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = "NONE", ctermbg = "NONE" })
+                end,
+            })
             vim.api.nvim_create_autocmd("User", {
                 pattern = "VeryLazy",
                 callback = function()
@@ -101,7 +121,7 @@ return {
                         { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
                     Snacks.toggle.treesitter():map("<leader>uT")
                     Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map(
-                    "<leader>ub")
+                        "<leader>ub")
                     Snacks.toggle.inlay_hints():map("<leader>uh")
                     Snacks.toggle.indent():map("<leader>ug")
                     Snacks.toggle.dim():map("<leader>uD")

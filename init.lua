@@ -18,6 +18,7 @@ if not vim.loop.fs_stat(lazypath) then
         lazypath,
     })
 end
+vim.o.background = "dark"
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
@@ -25,5 +26,4 @@ require("lazy").setup({
         { import = "plugins" },
     }
 })
-
-vim.cmd('colorscheme onedark_dark')
+--vim.cmd('colorscheme onedark_dark')

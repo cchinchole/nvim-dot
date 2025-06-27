@@ -9,6 +9,9 @@ return {
         priority = 1000,
         config = function()
             require('rose-pine').setup({
+                options = {
+                    transparent = true,
+                },
                 variant = "moon",
                 enable = {
                     terminal = true,
@@ -32,6 +35,7 @@ return {
         priority = 1000,
         config = function()
             require("catppuccin").setup({
+                transparent = true,
                 flavour = "mocha",
             })
         end
@@ -39,6 +43,13 @@ return {
     {
         'olimorris/onedarkpro.nvim',
         priority = 1000,
+        config = function()
+            require('onedarkpro').setup({
+                options = {
+                    transparent = true,
+                }
+            })
+        end
     },
     {
         'ray-x/starry.nvim',
@@ -47,7 +58,10 @@ return {
             require("starry").setup({
                 style = {
                     name = 'oceanic',
-                }
+                },
+                options = {
+                    transparent = true,
+                },
             })
         end
     },
@@ -55,6 +69,13 @@ return {
         'EdenEast/nightfox.nvim',
         lazy = false,
         priority = 1000,
+        config = function()
+            require('nightfox').setup({
+                options = {
+                    transparent = true,
+                },
+            })
+        end
     },
     {
         'scottmckendry/cyberdream.nvim',

@@ -11,9 +11,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves lines up in visual 
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
---Join lines 
-vim.keymap.set("n", "J", "mzJ`z")
-
 -- Jump half page with centering
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "move down in buffer with cursor centered" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor centered" })
@@ -49,3 +46,5 @@ vim.keymap.set("n", "<leader>lx", function()
         underline = isLspDiagnosticsVisible
     })
 end, { desc = "Toggle LSP diagnostics" })
+
+vim.keymap.set('n', '<leader>ql', function() require('quote_length').get_quote_length() end, { desc = 'Display quoted text length' })

@@ -1,18 +1,6 @@
-local root_files = {
-    '.luarc.json',
-    '.luarc.jsonc',
-    '.luacheckrc',
-    '.stylua.toml',
-    'stylua.toml',
-    'selene.toml',
-    'selene.yml',
-    '.git',
-}
-
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "stevearc/conform.nvim",
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
@@ -23,21 +11,10 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "stevearc/conform.nvim"
     },
 
     config = function()
-        require("conform").setup({
-            formatters_by_ft = {
-            }
-        })
-        local cmp = require('cmp')
-        local cmp_lsp = require("cmp_nvim_lsp")
-        local capabilities = vim.tbl_deep_extend(
-            "force",
-            {},
-            vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities())
-
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
@@ -47,56 +24,11 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "gopls",
-            },
-            handlers = {
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
-                    }
-                end,
-
-                zls = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.zls.setup({
-                        root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
-                        settings = {
-                            zls = {
-                                enable_inlay_hints = true,
-                                enable_snippets = true,
-                                warn_style = true,
-                            },
-                        },
-                    })
-                    vim.g.zig_fmt_parse_errors = 0
-                    vim.g.zig_fmt_autosave = 0
-                end,
-                ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                diagnostics = {
-                                    globals = { 'vim' },
-                                },
-                                format = {
-                                    enable = true,
-                                    -- Put format options here
-                                    -- NOTE: the value should be STRING!!
-                                    defaultConfig = {
-                                        indent_style = "space",
-                                        indent_size = "4",
-                                    }
-                                },
-                            }
-                        }
-                    }
-                end,
             }
         })
 
+        local cmp = require('cmp')
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
         cmp.setup({
             snippet = {
                 expand = function(args)

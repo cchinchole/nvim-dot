@@ -14,6 +14,4 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 
 vim.opt.hlsearch = true
-
-
 vim.g.editorconfig = true

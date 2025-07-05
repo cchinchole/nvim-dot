@@ -7,9 +7,9 @@ return
       require('oil').setup({
       default_file_explorer = true,
       columns = {
-         "permissions",
-         "size",
-         "mtime",
+         'permissions',
+         'size',
+         'mtime',
       },
       delete_to_trash = true,
       skip_confirm_for_simple_edits = true,
@@ -19,6 +19,6 @@ return
       },
   })
   require('oil-git').setup({})
-  vim.keymap.set("n", "e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+  vim.keymap.set('n', 'e', require('oil').toggle_float, { desc = 'Toggle oil from the parent directory' })
   end
 }

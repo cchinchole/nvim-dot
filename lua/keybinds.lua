@@ -1,5 +1,4 @@
 local opts = { noremap = true, silent = true }
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -15,17 +14,26 @@ vim.keymap.set("v", ">", ">gv", opts)
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "move down in buffer with cursor centered" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor centered" })
 
+--Keep search match centered
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Remove sticking to clipboard when deleting
 vim.keymap.set("n", "x", '"_x', opts)
+vim.keymap.set("v", "x", '"_x', opts)
 
--- remember yanked
+-- Keep yanked after pasting
 vim.keymap.set("v", "p", '"_dp', opts)  
 
--- Yank to system clipbaord
-vim.keymap.set("n", "<leader>Y", [["+Y]], opts)
+-- Yank to system clipboard in normal mode (e.g., yank entire line)
+vim.keymap.set("n", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+
+-- Yank to system clipboard in visual mode
+vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+
+-- Paste from system clipboard
+vim.keymap.set('n', '<leader>P', '"+p', { desc = 'Paste from system clipboard' })
+vim.keymap.set('v', '<leader>P', '"+p', { desc = 'Paste from system clipboard' })
 
 -- Stop highlighting and escape insert
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -36,6 +44,9 @@ vim.keymap.set("n", "Q", "<nop>")
 
 -- Formatting
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
+-- Find and replace under keyboard
+vim.keymap.set('n', '<leader>fr', ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- Toggle LSP diagnostics visibility
 local isLspDiagnosticsVisible = true

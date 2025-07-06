@@ -48,7 +48,11 @@ return {
         })
 
         vim.diagnostic.config({
-            -- update_in_insert = true,
+            virtual_text = {
+                severity = { min = vim.diagnostic.severity.ERROR },
+                spacing = 4,
+                prefix = "●",
+            },
             float = {
                 focusable = false,
                 style = "minimal",
@@ -57,6 +61,10 @@ return {
                 header = "",
                 prefix = "",
             },
+            signs = true,
+            underline = true,
+            update_in_insert = false,
+            severity_sort = true,
         })
 
         vim.keymap.set({ "n", "v" }, "<leader>l", function()

@@ -3,7 +3,7 @@
 pacman -S npm ripgrep wget nodejs fzf unzip\
 \
 This will show all available keybinds:\
-<leader>sk      - Search keybinds\
+<leader>sk      - Search keybinds
 
 ## Keybinds ##
 ### Movement ###
@@ -17,21 +17,21 @@ NT              - Go to previous todo\
 ### Visual ###
 J               - Move selection up\
 K               - Move selection down\
-/<               - Move selection left\
-/>               - Move selection right\
+'<'             - Move selection left\
+'>'             - Move selection right
 
 ### Selection ###
 sp              - Select parameter outer\
-<Ctrl>C         - Stop highlighting / escape insert\
+<Ctrl>C         - Stop highlighting / escape insert
 
 ### Swap ###
 Ctrl-.          - Swap to the next parameter\
-Ctrl-,          - Swap to the previous\
+Ctrl-,          - Swap to the previous
 
 ### Auto completion ###
 Ctrl-n          - Next item\
 Ctrl-p          - Previous item\
-Enter           - Confirms choice\
+Enter           - Confirms choice
 
 ### Lists ###
 <leader>tl      - Open quick fix list for todos\
@@ -46,7 +46,7 @@ Enter           - Confirms choice\
 <leader>gd      - Show git diff\
 <leader>gs      - Show git status\
 <leader>ss      - Show symbol list\
-<leader>sS      - Show project symbol list\
+<leader>sS      - Show project symbol list
 
 ### Search ###
 <leader>fr      - Find and replace highlighted\
@@ -57,10 +57,10 @@ Enter           - Confirms choice\
 <leader>sH      - Search highlights\
 <leader>si      - Search icons\
 <leader>su      - Search undo tree\
-<leader>uC      - Search color schemes\
+<leader>uC      - Search color schemes
 
 ### Pasting ###
-<leader>P       - Paste from system clipboard\
+<leader>P       - Paste from system clipboard
 
 ### LSP ###
 gd              - Go to definition\
@@ -70,15 +70,15 @@ gy              - Goto type definition\
 qf              - Quickfix list\
 ]]              - Next reference\
 [[              - Previous reference\
-<eader>f        - Format code\
+<eader>f        - Format code
 
 
 ### File Browser ###
-<leader>e       - Open file browser (uses normal vim movement)\
+<leader>e       - Open file browser (uses normal vim movement)
 
 ### Terminal ###
 <Ctrl>t         - Open / close terminal\
-<Esp>           - Exit terminal insert mode\
+<Esp>           - Exit terminal insert mode
 
 ### Conform ###
-<leader>l       - Format\
+<leader>l       - Format

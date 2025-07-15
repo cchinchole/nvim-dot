@@ -59,3 +59,7 @@ vim.keymap.set("n", "<leader>lx", function()
 end, { desc = "Toggle LSP diagnostics" })
 
 vim.keymap.set('n', '<leader>ql', function() require('quote_length').get_quote_length() end, { desc = 'Display quoted text length' })
+
+--local refactor = require('parameters')
+--vim.keymap.set('n', '<leader>sp', refactor.swap_parameter_with_previous, { desc = "Swap parameter with previous" })
+--vim.keymap.set('n', '<leader>sn', refactor.swap_parameter_with_next, { desc = "Swap parameter with next" })

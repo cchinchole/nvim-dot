@@ -19,6 +19,6 @@ return
       },
   })
   require('oil-git').setup({})
-  vim.keymap.set('n', 'e', require('oil').toggle_float, { desc = 'Toggle oil from the parent directory' })
+  vim.keymap.set('n', '<leader>e', require('oil').toggle_float, { desc = 'Toggle oil from the parent directory' })
   end
 }

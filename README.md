@@ -7,12 +7,12 @@ This will show all available keybinds:\
 
 ## Keybinds ##
 ### Movement ###
-nf              - Go to next function\
-NF              - Go to previous function\
-np              - Go to next parameter\
-NP              - Go to previous parameter\
-nt              - Go to next todo\
-NT              - Go to previous todo\
+<leader>nf      - Go to next function\
+<leader>NF      - Go to previous function\
+<leader>np      - Go to next parameter\
+<leader>NP      - Go to previous parameter\
+<leader>nt      - Go to next todo\
+<leader>NT      - Go to previous todo\
 
 ### Visual ###
 J               - Move selection up\
@@ -70,6 +70,7 @@ gy              - Goto type definition\
 qf              - Quickfix list\
 ]]              - Next reference\
 [[              - Previous reference\
+rn              - Rename Symbol\
 leader f        - Format code
 
 

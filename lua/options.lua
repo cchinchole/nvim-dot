@@ -15,3 +15,6 @@ vim.opt.background = "dark"
 
 vim.opt.hlsearch = true
 vim.g.editorconfig = true
+
+-- System clipboard
+vim.opt.clipboard:append("unnamedplus")

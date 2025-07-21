@@ -5,11 +5,11 @@ return {
         require('todo-comments').setup()
 
         vim.keymap.set('n', '<leader>tl', ':TodoQuickFix<CR>', { noremap = true, silent = true })
-        vim.keymap.set("n", "nt", function()
+        vim.keymap.set("n", "<leader>nt", function()
             require("todo-comments").jump_next()
         end, { desc = "Next todo comment" })
 
-        vim.keymap.set("n", "NT", function()
+        vim.keymap.set("n", "<leader>NT", function()
             require("todo-comments").jump_prev()
         end, { desc = "Previous todo comment" })
     end

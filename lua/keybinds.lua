@@ -25,16 +25,6 @@ vim.keymap.set("v", "x", '"_x', opts)
 -- Keep yanked after pasting
 vim.keymap.set("v", "p", '"_dp', opts)  
 
--- Yank to system clipboard in normal mode (e.g., yank entire line)
-vim.keymap.set("n", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
-
--- Yank to system clipboard in visual mode
-vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
-
--- Paste from system clipboard
-vim.keymap.set('n', '<leader>P', '"+p', { desc = 'Paste from system clipboard' })
-vim.keymap.set('v', '<leader>P', '"+p', { desc = 'Paste from system clipboard' })
-
 -- Stop highlighting and escape insert
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
@@ -60,6 +50,5 @@ end, { desc = "Toggle LSP diagnostics" })
 
 vim.keymap.set('n', '<leader>ql', function() require('quote_length').get_quote_length() end, { desc = 'Display quoted text length' })
 
---local refactor = require('parameters')
---vim.keymap.set('n', '<leader>sp', refactor.swap_parameter_with_previous, { desc = "Swap parameter with previous" })
---vim.keymap.set('n', '<leader>sn', refactor.swap_parameter_with_next, { desc = "Swap parameter with next" })
+-- Refactoring
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'LSP: Rename symbol' })

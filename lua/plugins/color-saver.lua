@@ -1,6 +1,2 @@
-return {
-  "https://git.sr.ht/~swaits/colorsaver.nvim",
-  lazy = true,
-  event = "VimEnter",
-  opts = {}
-}
+vim.pack.add({'https://git.sr.ht/~swaits/colorsaver.nvim'})
+require('colorsaver').setup({})

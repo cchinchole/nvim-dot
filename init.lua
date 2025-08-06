@@ -1,23 +1,12 @@
-require('options')
-require('keybinds')
-
--- Lazy Install
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
-end
-vim.o.background = "dark"
-vim.opt.rtp:prepend(lazypath)
-require("lazy").setup({
-    spec = {
-        { import = "themes", },
-        { import = "plugins" },
-    }
-})
+require('plugins.base16')
+require('plugins.lsp')
+require('plugins.oil')
+require('plugins.terminal')
+require('plugins.color-saver')
+require('plugins.highlight-colors')
+require('plugins.treesitter')
+require('plugins.rainbow-delimiter')
+require('plugins.todocomments')
+require('plugins.snacks')
+require('config.options')
+require('config.keybinds')

@@ -6,7 +6,7 @@ vim.pack.add({
     {src ='https://github.com/nvim-lua/plenary.nvim'}
 })
 
-require('colorsaver').setup({})
+--require('colorsaver').setup({})
 require('nvim-highlight-colors').setup({})
 
 local rainbow_delimiters = require 'rainbow-delimiters'
